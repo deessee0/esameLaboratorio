@@ -39,23 +39,15 @@ class CSVTimeSeriesFile:
             # Se NON sto processando l'intestazione...
             if elements[0] != 'epoch':
                 
-                epoch  = elements[0]
-                temp = elements[1]
-                    
                 try:
+                    epoch  = elements[0]
+                    temp = elements[1]
                     epoch = round(float(epoch))
-                
-                except ExamException as e:
-        
-                    # Stampo l'errore
-                    print('Errore nella conversione del epoch: "{}"'.format(e))
-
-                try:
                     temp = float(temp)
                 
-                except ExamException as e:
-                    # Stampo l'errore
-                    print('Errore nella conversione della temperatura: "{}"'.format(e))
+                except: 
+                    
+                    continue
 
                 # Utilizzo una lista temporanea per caricare i valori nella lista finale
                 tempListLoader.append(epoch)
